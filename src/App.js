@@ -1,11 +1,14 @@
-import "./App.css";
+import React from "react";
+import Navbar from "./component/Navbar";
+import Section from "./component/section/Section";
+import Footer from "./component/Footer";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <h1>Hello World</h1>
+    <div>
+      <Navbar />
+      <Section />
+      {/* <Footer /> */}
     </div>
   );
 }
-
-export default App;

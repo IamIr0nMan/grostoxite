@@ -1,13 +1,130 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+/* nav-first-div {
+  border: 5px solid red;
+} */
+
+.nav-img {
+  height: 50px;
+  width: 50px;
+  border-radius: 30%;
+  padding: 5px 6px;
+  margin: auto;
+}
+
+.split {
+  height: 100%;
+  width: 70%;
+  position: fixed;
+  z-index: 1;
+  /* top: 0; */
+  overflow-x: hidden;
+  /* padding-top: 50px; */
+  padding-right: 10px;
+}
+
+.left {
+  left: 0;
+  /* background-color: #111; */
+  /* padding: 10px 20px; */
+  padding-top: 20px;
+  width: 30%;
+  margin-left: 5 px;
+}
+
+.right {
+  right: 0;
+  padding-top: 20px;
+  padding-left: 25px;
+  padding-right: 25px;
+  /* background-color: red; */
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.centered img {
+  width: 150px;
+  border-radius: 50%;
+}
+
+.ayush-navbar {
+  height: 60px;
+}
+
+.akm {
+  /* background-color: #96aed1 !important; */
+  background-color: whitesmoke;
+}
+
+.container-fluid-ayush {
+  padding-left: 15px;
+}
+
+.navbar-right-part {
+  /* margin-left: auto; */
+  justify-content: right;
+  padding: 0px 30px;
+}
+
+.table {
+  border: 2px solid red;
+}
+
+.ayush-trying {
+  margin: 0;
+  display: flex;
+  list-style: none;
+  padding-left: 15px;
+  padding: 0px 10px;
+  /* border: 1px solid black; */
+}
+
+.ayush-left-li {
+  margin-right: auto;
+}
+
+.ayush-right-li {
+  /* margin-right: auto; */
+  padding-left: 20px;
+}
+
+.section {
+  margin-top: 1;
+}
+
+/* RightSide part Css: */
+
+.ayush-right-heading {
+  padding: 25px 0px;
+}
+
+/* vertical line between the section */
+.vertical {
+  border-left: 2px solid grey;
+  height: 100%;
+  position: fixed;
+  left: 30%;
+}
+
+/* Equity symbol styling */
+.equity-sym {
+  font-size: 30px;
 }
