@@ -29,7 +29,6 @@ code {
   width: 70%;
   position: fixed;
   z-index: 1;
-  /* top: 0; */
   overflow-x: hidden;
   /* padding-top: 50px; */
   padding-right: 10px;
@@ -37,11 +36,10 @@ code {
 
 .left {
   left: 0;
-  /* background-color: #111; */
-  /* padding: 10px 20px; */
   padding-top: 20px;
   width: 30%;
-  margin-left: 5 px;
+  padding-left: 25px;
+  padding-right: 25px;
 }
 
 .right {
@@ -49,7 +47,6 @@ code {
   padding-top: 20px;
   padding-left: 25px;
   padding-right: 25px;
-  /* background-color: red; */
 }
 
 .centered {
@@ -93,7 +90,7 @@ code {
   display: flex;
   list-style: none;
   padding-left: 15px;
-  padding: 0px 10px;
+  padding: 2px 10px;
   /* border: 1px solid black; */
 }
 
@@ -113,7 +110,7 @@ code {
 /* RightSide part Css: */
 
 .ayush-right-heading {
-  padding: 25px 0px;
+  padding: 8px 0px;
 }
 
 /* vertical line between the section */
@@ -126,7 +123,13 @@ code {
 
 /* Equity symbol styling */
 .equity-sym {
-  font-size: 30px;
+  height: 20px;
+  width: 20px;
+}
+
+.holding-compnent {
+  padding-left: 12px;
+  font-size: 20px;
 }
 
 /* This is to change the right section 2 nd sub part*/
@@ -136,10 +139,41 @@ code {
 }
 .equity-right-sec {
   display: flex;
+  height: 100px;
+  margin-left: 2px;
+  margin-right: 2px;
 }
 .right-subsec-2-ul-1 {
   list-style: none;
+  margin-right: auto;
+  padding-top: 10px;
+  font-size: 1.35rem;
+  font-weight: 400;
 }
-/* .ayush123 {
-  width: 250px;
-} */
+.holding-pl {
+  font-size: 2.35rem;
+  font-weight: 400;
+}
+.ayush123 {
+  width: 40%;
+}
+
+/* This is for the vertical seperation between the holding subpart of the right subsection. */
+.vertical-separartion-holdings {
+  border-left: 2px solid grey;
+}
+
+.current-value {
+  line-height: 2;
+}
+
+.holding-heading {
+  line-height: 3;
+}
+
+.holding-main-table {
+  padding-top: 15px;
+}
+.large{
+  font-size: large;
+}
