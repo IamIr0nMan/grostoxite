@@ -6,7 +6,7 @@ export default function SectionRight() {
       <div className="split right">
         <div /*className="centered" */>
           <h2 className="ayush-right-heading">Hi, Ayush Mishra</h2>
-          <hr />
+          {/* <hr /> */}
           <div>
             <ul className="right-subsec-2">
               <li>
