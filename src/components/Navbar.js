@@ -17,7 +17,7 @@ function Navbar() {
         id="navbarSupportedContent"
       >
         <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZs_zAGR5MK8SvpAEBXn39Ma4yEsgzvt2XPg&usqp=CAU"
+          src="./images/grostoxite .png"
           className="nav-img"
           alternate="Some image"
         />
