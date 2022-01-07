@@ -24,7 +24,6 @@ export default function SectionRight() {
               </ul>
             </div>
             <div className="vertical-rightsec"></div>
-            <SectionRight />
             <div className="ayush123">
               <ul className="right-subsec-2-ul-1">
                 <li>Margin Used</li>
@@ -34,8 +33,6 @@ export default function SectionRight() {
               </ul>
             </div>
           </div>
-
-          <hr />
         </div>
       </div>
     </div>
