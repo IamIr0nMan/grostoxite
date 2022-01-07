@@ -6,33 +6,34 @@ export default function SectionRight() {
       <div className="split right">
         <div /*className="centered" */>
           <h2 className="ayush-right-heading">Hi, Ayush Mishra</h2>
-          {/* <hr /> */}
+          <hr />
           <div>
             <ul className="right-subsec-2">
               <li>
-                <span className="equity-sym">&#9737;</span>Holdings
+                <img src="./images/icon.png" className="equity-sym" />
+                <span className="holding-compnent">Holdings</span>
               </li>
             </ul>
           </div>
           <div className="equity-right-sec">
             <div className="ayush123">
               <ul className="right-subsec-2-ul-1">
-                <li>1.76L</li>
+                <li className="holding-pl">1.76L</li>
                 <li>
                   <sub>P&L</sub>
                 </li>
               </ul>
             </div>
+            <div className="vertical-separartion-holdings"></div>
             <div className="vertical-rightsec"></div>
             <div className="ayush123">
               <ul className="right-subsec-2-ul-1">
-                <li>Margin Used</li>
-                <li>
-                  <sub>Account Value</sub>
-                </li>
+                <li className="current-value">Current Value</li>
+                <li className="investment">Investment</li>
               </ul>
             </div>
           </div>
+          <hr />
         </div>
       </div>
     </div>

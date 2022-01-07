@@ -2,7 +2,7 @@ import React from "react";
 
 function Navbar() {
   return (
-    <nav class="navbar navbar-expand-sm navbar-light ayush-navbar akm">
+    <nav class="navbar navbar-expand-sm navbar-light ayush-navbar akm shadow">
       <div className="container-fluid-ayush">
         <a class="navbar-brand" href="#">
           NIFTY50
@@ -23,17 +23,17 @@ function Navbar() {
         />
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">
+            <a class="nav-link active" aria-current="page" href="section">
               Dasboard
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="#">
+            <a class="nav-link active" href="order">
               Orders
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="#">
+            <a class="nav-link active" href="holding">
               Holdings
             </a>
           </li>
