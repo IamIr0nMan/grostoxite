@@ -17,7 +17,7 @@ function Navbar() {
         id="navbarSupportedContent"
       >
         <img
-          src="./images/grostoxite .png"
+          src="./images/grostoxite.png"
           className="nav-img"
           alternate="Some image"
         />
