@@ -9,15 +9,11 @@ function Profile() {
         <h2>Deepak Kumar</h2>
         <br />
         <div>
-          <div className="d-flex flex-row p-2">
-            <div className="d-flex justify-content-start">
-              <h4>Account</h4>
-            </div>
-            <div className="d-flex justify-content-end">
-              <a href="">
-                <h4>edit</h4>
-              </a>
-            </div>
+          <div className="d-flex flex-row">
+            <h4 className="justify-content-between">Account</h4>
+            <a href="" className="justify-content-between ms-auto">
+              <h4>edit</h4>
+            </a>
           </div>
           <hr />
           <table className="table table-borderless border-0">
