@@ -30,6 +30,11 @@ function Funds() {
             </tr>
           </tbody>
         </table>
+        <div className="d-flex flex-row-reverse">
+          <a href="" className="text-decoration-none">
+            view statement
+          </a>
+        </div>
       </div>
     </div>
   );
