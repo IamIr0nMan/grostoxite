@@ -39,11 +39,6 @@ function Navbar() {
           </li>
           <li class="nav-item">
             <a class="nav-link active" href="#">
-              Position
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="#">
               Profile
             </a>
           </li>
