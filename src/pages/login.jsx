@@ -6,7 +6,7 @@ class Login extends React.Component {
       <div style={{ backgroundColor: "rgb(249, 249, 249)" }} className="vh-100">
         <div
           style={{ backgroundColor: "rgb(256, 256, 256)" }}
-          className="h-auto w-50 border p-5 position-absolute top-50 start-50 translate-middle"
+          className="h-auto w-50 border p-5 position-absolute top-50 start-50 translate-middle shadow"
         >
           <div className="d-flex flex-column">
             <div className="d-flex justify-content-center">

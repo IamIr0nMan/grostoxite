@@ -1,7 +1,6 @@
 import React from "react";
-import Navbar from "./components/Navbar";
-import Section from "./components/section/Section";
-import Footer from "./components/Footer";
+import Navbar from "./components/navbar";
+import Section from "./components/section/section";
 
 export default function App() {
   return (

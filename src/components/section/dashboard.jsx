@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function SectionRight() {
+export default function Dashboard() {
   return (
     <div>
       <div className="split right">
@@ -10,7 +10,11 @@ export default function SectionRight() {
           <div>
             <ul className="right-subsec-2">
               <li>
-                <img src="./images/icon.png" className="equity-sym" />
+                <img
+                  src="./images/icon.png"
+                  alt="Holdings"
+                  className="equity-sym"
+                />
                 <span className="holding-compnent">Holdings</span>
               </li>
             </ul>
