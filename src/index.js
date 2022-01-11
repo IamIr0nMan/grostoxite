@@ -4,11 +4,12 @@ import "./index.css";
 import App from "./App";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Login from "./pages/login";
-
+import SinUp from "./pages/signUp";
 ReactDOM.render(
   <React.StrictMode>
     {/* <App /> */}
-    <Login />
+    {/* <Login /> */}
+    <SinUp />
   </React.StrictMode>,
   document.getElementById("root")
 );
