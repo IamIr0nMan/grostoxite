@@ -1,46 +1,49 @@
 import React from "react";
+import { Link, NavLink } from "react-router-dom";
 
 function Navbar() {
   return (
-    <nav class="navbar navbar-expand-sm navbar-light ayush-navbar akm shadow">
+    <nav className="navbar navbar-expand-sm navbar-light ayush-navbar akm shadow">
       <div className="container-fluid-ayush">
-        <a class="navbar-brand" href="#">
+        <Link className="navbar-brand" to="/">
           NIFTY50
-        </a>
-        <a class="navbar-brand" href="#">
+        </Link>
+        <Link className="navbar-brand" to="/">
           SENSEX
-        </a>
+        </Link>
       </div>
 
       <div
-        class="collapse navbar-collapse navbar-right-part"
+        className="collapse navbar-collapse navbar-right-part"
         id="navbarSupportedContent"
       >
+        {/* <Link to="/"> */}
         <img
           src="./images/grostoxite.png"
           className="nav-img"
           alternate="Some image"
         />
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="section">
+        {/* </Link> */}
+        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+          <li className="nav-item">
+            <NavLink className="nav-link" aria-current="page" to="/">
               Dasboard
-            </a>
+            </NavLink>
           </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="order">
+          <li className="nav-item">
+            <NavLink className="nav-link" to="/orders">
               Orders
-            </a>
+            </NavLink>
           </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="holding">
+          <li className="nav-item">
+            <NavLink className="nav-link" to="/holdings">
               Holdings
-            </a>
+            </NavLink>
           </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="#">
+          <li className="nav-item">
+            <NavLink className="nav-link" to="/profile">
               Profile
-            </a>
+            </NavLink>
           </li>
         </ul>
       </div>

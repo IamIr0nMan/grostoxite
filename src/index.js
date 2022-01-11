@@ -1,15 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter } from "react-router-dom";
+
 import "./index.css";
 import App from "./App";
-import "bootstrap/dist/css/bootstrap.min.css";
 import Login from "./pages/login";
 import SinUp from "./pages/signUp";
 ReactDOM.render(
   <React.StrictMode>
-    {/* <App /> */}
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
     {/* <Login /> */}
-    <SinUp />
+    {/* <SinUp /> */}
   </React.StrictMode>,
   document.getElementById("root")
 );
