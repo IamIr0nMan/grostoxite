@@ -12,36 +12,43 @@ function Navbar() {
           SENSEX
         </Link>
       </div>
-
       <div
-        className="collapse navbar-collapse navbar-right-part"
+        navbar-link-prop
+        className="collapse navbar-collapse"
         id="navbarSupportedContent"
+        style={{ padding: "0px 60px" }}
       >
-        {/* <Link to="/"> */}
-        <img
-          src="./images/grostoxite.png"
-          className="nav-img"
-          alternate="Some image"
-        />
-        {/* </Link> */}
-        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+        <div className="ms-auto">
+          <Link to="/" id="navbarSupportedContent">
+            <img
+              src="./images/grostoxite.png"
+              className="nav-img"
+              alternate="Some image"
+            />
+          </Link>
+        </div>
+        <ul className="navbar-nav ms-auto mb-2 mb-lg-0 ">
           <li className="nav-item">
-            <NavLink className="nav-link" aria-current="page" to="/">
+            <NavLink
+              className="nav-link navbar-link-prop"
+              aria-current="page"
+              to="/"
+            >
               Dasboard
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" to="/orders">
+            <NavLink className="nav-link " to="/orders">
               Orders
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" to="/holdings">
+            <NavLink className="nav-link navbar-link-prop" to="/holdings">
               Holdings
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" to="/profile">
+            <NavLink className="nav-link navbar-link-prop" to="/profile">
               Profile
             </NavLink>
           </li>

@@ -75,12 +75,6 @@ code {
   padding-left: 15px;
 }
 
-.navbar-right-part {
-  /* margin-left: auto; */
-  justify-content: right;
-  padding: 0px 30px;
-}
-
 .table {
   border: 2px solid red;
 }
@@ -102,6 +96,12 @@ code {
   /* margin-right: auto; */
   padding-left: 20px;
 }
+
+.navbar-link-prop:hover {
+  color: black;
+}
+
+/* SECTION */
 
 .section {
   margin-top: 1;
