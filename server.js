@@ -3,6 +3,7 @@ const cors = require("cors");
 
 const assetsRoute = require("./routes/assets-route");
 const usersRoute = require("./routes/users-route");
+const HttpError = require("./models/http-error");
 
 const app = express();
 const Port = process.env.PORT || 4000;
@@ -16,6 +17,10 @@ app.use("/api/users", usersRoute);
 
 app.get("/", (req, res) => {
   res.json({ message: "Connection to backend successful..." });
+});
+
+app.use((req, res, next) => {
+  throw new HttpError("Could not find this route...", 404);
 });
 
 app.use((error, req, res, next) => {
