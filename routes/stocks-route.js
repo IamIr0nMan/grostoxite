@@ -1,29 +1,13 @@
 const express = require("express");
 
+const StocksControllers = require("../controllers/stocks-controller");
+
 const router = express.Router();
 
-router.post("/buy/:stockId", (req, res, next) => {
-  console.log(req.params.stockId);
-  res.json({
-    message: "The stock requested is bought",
-    id: req.params.stockId,
-  });
-});
+router.post("/buy/:stockId", StocksControllers.buyStockById);
 
-router.post("/sell/:stockId", (req, res, next) => {
-  console.log(req.params.stockId);
-  res.json({
-    message: "The stock requested is sold",
-    id: req.params.stockId,
-  });
-});
+router.post("/sell/:stockId", StocksControllers.sellStockById);
 
-router.get("/:stockId", (req, res, next) => {
-  console.log(req.params.stockId);
-  res.json({
-    message: "Here are the details of the stock requested",
-    id: req.params.stockId,
-  });
-});
+router.get("/:stockId", StocksControllers.getStockById);
 
 module.exports = router;
