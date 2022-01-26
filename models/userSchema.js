@@ -16,11 +16,6 @@ const userSchema = new Schema({
   accountNumber: { type: Number, required: true },
   tradingBalance: { type: mongoose.Types.Decimal128, required: true },
   bankBalance: { type: mongoose.Types.Decimal128, required: true },
-  portfolio: {
-    type: mongoose.Types.ObjectId,
-    required: true,
-    ref: "Portfolio",
-  },
 });
 
 userSchema.plugin(uniqueValidator);
