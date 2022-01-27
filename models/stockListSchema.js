@@ -37,4 +37,4 @@ const stockListSchema = new Schema({
 
 stockListSchema.plugin(mongooseUniqueValidator);
 
-module.exports = mongoose.Model("StockList", stockListSchema);
+module.exports = mongoose.model("StockList", stockListSchema);

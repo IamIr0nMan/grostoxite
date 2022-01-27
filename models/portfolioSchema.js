@@ -32,4 +32,6 @@ const portfolioSchema = new Schema({
   mutualFunds: [{ type: mututalFundsSchema, required: false }],
 });
 
-module.exports = mongoose.model("Portfolio", portfolioSchema);
+exports.Portfolio = mongoose.model("Portfolio", portfolioSchema);
+exports.Stock = mongoose.model("Stock", stockSchema);
+exports.MutualFund = mongoose.model("MutualFund", mututalFundsSchema);

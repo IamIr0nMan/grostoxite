@@ -18,4 +18,4 @@ const mutualFundsSchema = new Schema({
 
 mutualFundsSchema.plugin(mongooseUniqueValidator);
 
-module.exports = mongoose.Model("MutualFundList", mutualFundsSchema);
+module.exports = mongoose.model("MutualFundList", mutualFundsSchema);
