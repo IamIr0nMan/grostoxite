@@ -83,8 +83,7 @@ code {
   margin: 0;
   display: flex;
   list-style: none;
-  padding-left: 15px;
-  padding: 2px 10px;
+  padding: 20px 10px;
   /* border: 1px solid black; */
 }
 
@@ -176,4 +175,31 @@ code {
 }
 .large {
   font-size: large;
+}
+
+
+/* Animation for the stockview components. */
+
+.stockview-anime {
+  width: 100%;
+  margin: 20px 5px;
+  margin-bottom: 0px;
+  background-color: #f9fcff;
+  box-shadow: 5px 5px 19px 1px rgba(20, 35, 97, 0.28);
+  transition: 0.5s ease all;
+  font-size: 18px;
+  border-radius: 25px;
+}
+
+.stockview-anime:hover {
+  transform: scale(1.05);
+  font-size: 22px;
+  font-weight: 500;
+
+}
+
+/* This  is to style the a of the stockview to handle the link press. */
+
+.stockview-a{
+  text-decoration: none;
 }
