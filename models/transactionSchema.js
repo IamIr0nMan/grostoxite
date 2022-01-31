@@ -8,7 +8,7 @@ const transactionSchema = new Schema({
   date: { type: Date, required: true },
   units: { type: mongoose.Types.Decimal128, required: true },
   status: { type: String, enum: ["Buy", "Sell"], required: true },
-  amountInvested: { type: mongoose.Types.Decimal128, required: true },
+  amount: { type: mongoose.Types.Decimal128, required: true },
   onModel: {
     type: String,
     required: true,
