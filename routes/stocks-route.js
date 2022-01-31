@@ -1,13 +1,16 @@
 const express = require("express");
 
-const StocksControllers = require("../controllers/stocks-controller");
+const stockDetailsController = require("../controllers/stockDetails-controller");
+const stockTransactionsController = require("../controllers/stockTransactions-controller");
 
 const router = express.Router();
 
-router.post("/buy/:stockId", StocksControllers.buyStockById);
+router.post("/buy", stockTransactionsController.buyStock);
 
-router.post("/sell/:stockId", StocksControllers.sellStockById);
+router.post("/sell", stockTransactionsController.sellStock);
 
-router.get("/:stockId", StocksControllers.getStockById);
+router.get("/:stockId", stockDetailsController.getStockById);
+
+router.get("/", stockDetailsController.getAllStocks);
 
 module.exports = router;

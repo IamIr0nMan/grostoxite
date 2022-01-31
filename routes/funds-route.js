@@ -1,13 +1,16 @@
 const express = require("express");
 
-const fundsControllers = require("../controllers/funds-controller");
+const fundDetailsController = require("../controllers/fundDetails-controller");
+const fundTransactionsController = require("../controllers/fundTransactions-controller");
 
 const router = express.Router();
 
-router.post("/buy/:fundId", fundsControllers.buyFundById);
+router.post("/buy", fundTransactionsController.buyFund);
 
-router.post("/sell/:fundId", fundsControllers.sellFundById);
+router.post("/sell", fundTransactionsController.sellFund);
 
-router.get("/:fundId", fundsControllers.getFundById);
+router.get("/:fundId", fundDetailsController.getFundById);
+
+router.get("/", fundDetailsController.getAllFunds);
 
 module.exports = router;

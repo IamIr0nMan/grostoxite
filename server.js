@@ -1,5 +1,7 @@
 const express = require("express");
 const cors = require("cors");
+const mongoose = require("mongoose");
+require("dotenv").config();
 
 const assetsRoute = require("./routes/assets-route");
 const usersRoute = require("./routes/users-route");
@@ -30,4 +32,10 @@ app.use((error, req, res, next) => {
 });
 // To trigger this error handling middleware, either throw an error or return a call to next with the error object created(return next(error)).
 
-app.listen(Port, () => console.log(`Server running on port: ${Port}`));
+mongoose
+  .connect(process.env.MONGODB_URL)
+  .then(() => {
+    console.log("connection to database established");
+    app.listen(Port, () => console.log(`Server running on port: ${Port}`));
+  })
+  .catch((err) => console.log(err));

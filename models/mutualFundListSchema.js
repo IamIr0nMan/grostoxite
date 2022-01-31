@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const mongooseUniqueValidator = require("mongoose-unique-validator");
 
 mongoose.pluralize(null);
 
@@ -15,7 +14,5 @@ const mutualFundsSchema = new Schema({
   inceptionDate: Date,
   nav: [{ date: Date, nav: mongoose.Types.Decimal128 }],
 });
-
-mutualFundsSchema.plugin(mongooseUniqueValidator);
 
 module.exports = mongoose.model("MutualFundList", mutualFundsSchema);
