@@ -17,60 +17,111 @@ export default function sinup() {
         <div className="d-flex justify-content-center">
           <h1 className="fw-light mb-3">Signup now</h1>
         </div>
-        <form action="/" method="get" className="singup-form">
-          <div class="mb-3 fs-6 font-monospace">
-            <label for="exampleInputPhone" class="form-label">
+        <form action="/" method="get" className="singup-form row g3">
+          <div class="col-md-6 mb-3 fs-6 font-monospace">
+            <label for="inputEmail4" class="form-label">
+              First Name
+            </label>
+            <input 
+            type="text" 
+            name="firstname"
+            class="form-control" 
+            id="inputEmail4" />
+          </div>
+          <div class="col-md-6 mb-3 fs-6 font-monospace">
+            <label for="inputPassword4" class="form-label">
+              Last Name
+            </label>
+            <input type="text" 
+            name="lastname"
+            class="form-control" id="inputPassword4"  
+            />
+          </div>
+          <div class="col-md-6 mb-3 fs-6 font-monospace">
+            <label for="inputEmail4" class="form-label">
+             DOB
+            </label>
+            <input 
+            type="date" 
+            name="dateofbirth"
+            class="form-control" 
+            id="inputEmail4" />
+          </div>
+          <div class="col-md-6 mb-3 fs-6 font-monospace">
+            <label for="inputPassword4" class="form-label">
               Phone No
             </label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-              class="form-control"
+            <input type="number" 
+            name="mobile"
+            class="form-control" id="inputPassword4" 
+
             />
           </div>
-          <div class="mb-3 fs-6 font-monospace ">
-            <label for="exampleInputEmail1" class="form-label">
-              Full Name
-            </label>
-            <input
-              type="text"
-              class="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="nameHelp"
-            />
-          </div>
-          <div class="mb-3 fs-6 font-monospace">
-            <label for="exampleInputEmail1" class="form-label">
+          <div class="col-md-6 mb-3 fs-6 font-monospace">
+            <label for="inputAddress" class="form-label">
               Email
             </label>
             <input
               type="email"
+              name="email"
               class="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
+              id="inputAddress"
+              placeholder=""
             />
           </div>
-          <div class="mb-3 fs-6 font-monospace">
-            <label for="exampleInputPassword1" class="form-label">
-              Password
+          <div class="col-md-6 mb-3 fs-6 font-monospace">
+            <label for="inputAddress" class="form-label">
+              Adhar Number
             </label>
             <input
-              type="password"
+              type="text"
+              name="identification"
               class="form-control"
-              id="exampleInputPassword1"
+              id="inputAddress"
+              placeholder=""
             />
           </div>
-          <div class="mb-3 fs-6 font-monospace">
-            <label for="exampleInputPassword1" class="form-label">
-              Confirm Password
+          <div class="col-12 mb-3 fs-6 font-monospace">
+            <label for="inputAddress" class="form-label">
+              Address
             </label>
             <input
-              type="password"
+              type="text"
+              name="address"
               class="form-control"
-              id="exampleInputPassword1"
+              id="inputAddress"
+              placeholder=""
             />
+          </div>
+          <div class="col-md-6 mb-3 fs-6 font-monospace">
+            <label for="inputEmail4" class="form-label">
+              Account Number
+            </label>
+            <input 
+            type="number" 
+            name="accountNo"
+            class="form-control" 
+            id="inputEmail4" />
+          </div>
+          <div class="col-md-6 mb-3 fs-6 font-monospace">
+            <label for="inputEmail4" class="form-label">
+             Bank Name
+            </label>
+            <input 
+            type="text" 
+            name="bankName"
+            class="form-control" 
+            id="inputEmail4" />
+          </div>
+          <div class="col-12 mb-3 fs-6 font-monospace">
+            <label for="inputEmail4" class="form-label">
+            Trading Balance
+            </label>
+            <input 
+            type="number" 
+            name="bankName"
+            class="form-control" 
+            id="inputEmail4" />
           </div>
           <button type="submit" class="btn btn-primary">
             Submit
