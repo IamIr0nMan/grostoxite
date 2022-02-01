@@ -8,6 +8,7 @@ import Holdings from "../holdings";
 import Orders from "../orders";
 import Profile from "../profile";
 import NotFound from "../../pages/notFound";
+import MutualFund from "../MutualFund";
 
 export default function Section() {
   return (
@@ -16,6 +17,7 @@ export default function Section() {
       <div className="vertical"></div>
 
       <Routes>
+        <Route path="/mutualFund" element={<MutualFund />} />
         <Route path="/funds" element={<Funds />} />
         <Route path="/holdings" element={<Holdings />} />
         <Route path="/orders" element={<Orders />} />

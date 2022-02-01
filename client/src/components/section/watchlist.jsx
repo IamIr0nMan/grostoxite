@@ -3,19 +3,17 @@ import StockView from "./stockview.jsx";
 
 export default function WatchList() {
   
-  const [myState, setmyState] = React.useState([]);
+  const [stockData, setStockData] = React.useState([]);
   React.useEffect(() => {
     fetch('https://swapi.dev/api/people/').
     then(res => res.json()).
     then(data => {
-      setmyState(data.results)}).catch(err => console.log(err));
+      setStockData(data.results)}).catch(err => console.log(err));
     }, [])
-//  console.log(myState);
 
-const jokeElements = myState.map((data)=> {
+const stockdata = stockData.map((data)=> {
   return (
-      <StockView 
-          // name = {data.name}
+      <StockView
           name = {data.name}
           height = {data.height}
           mass = {data.mass}
@@ -25,13 +23,9 @@ const jokeElements = myState.map((data)=> {
   return (
     <div>
       <div className="split left">
-        <div /* className="centered" */>
-        {/* <pre>{JSON.stringify(myState, null, 2)}</pre> */}
-           {/* <StockView />
-          <StockView />
-          <StockView />
-          <StockView />  */}
-          {jokeElements}
+        <div>
+        {/* <button type="button" class="btn btn-primary" onClick={toggleState()}>Clik to Chnage</button> */}
+        {stockdata}
         </div>
       </div>
     </div>
