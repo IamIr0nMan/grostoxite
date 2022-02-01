@@ -38,7 +38,8 @@ const sellStock = async (req, res, next) => {
 
   const transaction = new Transaction({
     investor: user._id,
-    asset: stock._id,
+    assetId: stock._id,
+    assetName: stock.ticker,
     date: new Date(today),
     units: quantity,
     status: "Sell",
@@ -112,8 +113,7 @@ const buyStock = async (req, res, next) => {
   } catch (error) {
     console.error("Error occured while finding the user with the given Id");
     console.log(error);
-    const err = new HttpError("Failed to buy stock, please try again", 500);
-    return next(err);
+    return next(new HttpError("Failed to buy stock, please try again", 500));
   }
 
   if (!user)
@@ -121,7 +121,8 @@ const buyStock = async (req, res, next) => {
 
   const transaction = new Transaction({
     investor: user._id,
-    asset: stock._id,
+    assetId: stock._id,
+    assetName: stock.ticker,
     date: new Date(today),
     units: quantity,
     status: "Buy",
@@ -135,18 +136,29 @@ const buyStock = async (req, res, next) => {
   } catch (error) {
     console.error("Error finding the portfolio with the given Id");
     console.log(error);
-    return next(new HttpError("Failed to sell stock, please try again", 500));
+    return next(new HttpError("Failed to buy stock, please try again", 500));
   }
 
   const index = portfolio.stocks.findIndex((each) => each._id === stock._id);
   if (index === -1) {
-    const stock = {
+    const newStock = {
       stock: stock._id,
       quantity,
       buyPrice: price,
     };
-    portfolio.stocks.push(stock);
-  } else portfolio.stocks[index].quantity += quantity;
+    portfolio.stocks.push(newStock);
+  } else {
+    const availableQuantity = portfolio.stocks[index].quantity;
+    const newStock = {
+      stock: stock._id,
+      quantity: availableQuantity + quantity,
+      buyPrice:
+        (quantity * price +
+          portfolio.stocks[index].buyPrice * availableQuantity) /
+        (quantity + availableQuantity),
+    };
+    portfolio.stocks.splice(index, 1, newStock);
+  }
 
   user.tradingBalance -= quantity * price;
 
@@ -161,7 +173,7 @@ const buyStock = async (req, res, next) => {
   } catch (error) {
     console.error("Transaction failed");
     console.log(error);
-    return next(new HttpError("Failed to sell stock, please try again", 500));
+    return next(new HttpError("Failed to buy stock, please try again", 500));
   }
 
   res.status(200).json({

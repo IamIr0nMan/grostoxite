@@ -31,7 +31,7 @@ const portfolioSchema = new Schema({
           ref: "MutualFundList",
         },
         units: { type: mongoose.Types.Decimal128, required: true },
-        amountInvested: { type: mongoose.Types.Decimal128, required: true },
+        nav: { type: mongoose.Types.Decimal128, required: true },
       },
       required: false,
     },

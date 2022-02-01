@@ -4,7 +4,12 @@ const Schema = mongoose.Schema;
 
 const transactionSchema = new Schema({
   investor: { type: mongoose.Types.ObjectId, required: true, ref: "User" },
-  asset: { type: mongoose.Types.ObjectId, required: true, refPath: "onModel" },
+  assetId: {
+    type: mongoose.Types.ObjectId,
+    required: true,
+    refPath: "onModel",
+  },
+  assetName: { type: String, required: true },
   date: { type: Date, required: true },
   units: { type: mongoose.Types.Decimal128, required: true },
   status: { type: String, enum: ["Buy", "Sell"], required: true },
