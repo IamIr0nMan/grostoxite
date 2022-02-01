@@ -142,7 +142,8 @@ const buyStock = async (req, res, next) => {
   const index = portfolio.stocks.findIndex((each) => each._id === stock._id);
   if (index === -1) {
     const newStock = {
-      stock: stock._id,
+      stockId: stock._id,
+      stockName: stock.ticker,
       quantity,
       buyPrice: price,
     };
@@ -150,7 +151,8 @@ const buyStock = async (req, res, next) => {
   } else {
     const availableQuantity = portfolio.stocks[index].quantity;
     const newStock = {
-      stock: stock._id,
+      stockId: stock._id,
+      stockName: stock.ticker,
       quantity: availableQuantity + quantity,
       buyPrice:
         (quantity * price +

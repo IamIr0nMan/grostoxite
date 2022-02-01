@@ -22,16 +22,15 @@ const signup = async (req, res, next) => {
   try {
     existingUser = await User.findOne({ email: email });
   } catch (error) {
-    console.error("Checking existing user with email on signup failed\n");
+    console.error("Error checking existing user with email on signup");
     console.log(error);
-    err = new HttpError("Signing up failed, please try again later", 500);
-    return next(err);
+    return next(new HttpError("Sign up failed, please try again later", 500));
   }
 
-  if (existingUser) {
-    err = new HttpError("User already exists, please login instead", 422);
-    return next(err);
-  }
+  if (existingUser)
+    return next(
+      new HttpError("User already exists, please login instead", 422)
+    );
 
   const createdUser = new User({
     fname,
@@ -56,20 +55,19 @@ const signup = async (req, res, next) => {
       try {
         await userPortfolio.save();
       } catch (errObj) {
-        console.error("Creating and saving user portfolio to database failed");
+        console.error("Error creating and saving user portfolio to database");
         console.log(errObj);
       }
     });
   } catch (error) {
-    console.error("Saving new user to database failed");
+    console.error("Error saving new user to database");
     console.log(error);
-    err = new HttpError("Signing up failed, please try again later", 500);
-    return next(err);
+    return next(new HttpError("Sign up failed, please try again later", 500));
   }
 
   res
     .status(201)
-    .json({ message: "User signup successful", user: createdUser });
+    .json({ message: "User signup successful", userId: createdUser._id });
 };
 
 const login = async (req, res, next) => {
@@ -79,44 +77,91 @@ const login = async (req, res, next) => {
   try {
     existingUser = await User.findOne({ email: email });
   } catch (error) {
-    console.error("Checking existing user on login failed");
+    console.error("Error checking existing user on login");
     console.log(error);
-    const err = new HttpError("Login failed, please try again", 500);
-    return next(err);
+    return next(new HttpError("Login failed, please try again", 500));
   }
 
-  if (!existingUser) {
-    const error = new HttpError("User does not exist, please sign up", 401);
-    return next(error);
-  } else if (existingUser.password !== password) {
-    const error = new HttpError("Invalid Credentials, please try again", 401);
-    return next(error);
-  }
+  if (!existingUser)
+    return next(new HttpError("User does not exist, please sign up", 404));
+  else if (existingUser.password !== password)
+    return next(new HttpError("Invalid Credentials, please try again", 401));
 
-  res.status(200).json({ message: "User logged in...", id: existingUser._id });
+  res.status(200).json({ message: "User logged in", userId: existingUser._id });
 };
 
 const updatePassword = (req, res, next) => {
-  console.log("Password changed...");
+  console.log("Password changed");
   res.json({ message: "Password changed. Use new password to login" });
 };
 
 const forgotPassword = (req, res, next) => {
-  console.log("Password changed...");
+  console.log("Password changed");
   res.json({ message: "Password changed. Use new password to login" });
 };
 
 const getAccountDetails = (req, res, next) => {
-  console.log("The account details request is fullfilled...");
-  res.json({
-    message: "Here is the account details of the user",
-    name: "User",
-  });
+  const userId = req.params.userId;
+  let existingUser;
+
+  try {
+    existingUser = await User.findById(userId);
+  } catch (error) {
+    console.error("Error checking existing user for details");
+    console.log(error);
+    return next(new HttpError("Cannot get details, please try again", 500));
+  }
+
+  if (!existingUser)
+    return next(new HttpError("User does not exist, please sign up", 404));
+
+  const dateFormatOptions = { year: "numeric", month: "long", day: "numeric" };
+  const accountDetails = {
+    name: existingUser.fname + existingUser.lname,
+    email: existingUser.email,
+    dob: existingUser.dob.toLocaleDateString("en-IN", dateFormatOptions),
+    identification: existingUser.identification,
+    mobile: existingUser.mobile,
+    address: existingUser.address,
+    bank: existingUser.bankName,
+    bankAccountNumber: existingUser.accountNumber,
+    tradingBalance: existingUser.tradingBalance,
+    bankBalance: existingUser.bankBalance,
+  };
+
+  res.status(200).json({ id: existingUser._id, accountDetails });
 };
 
 const getPortfolioDetails = (req, res, next) => {
-  console.log("The requested portfolio of the user...");
-  res.json({ message: "The list of assets the user have..." });
+  const userId = req.params.userId;
+  let existingUser;
+
+  try {
+    existingUser = await User.findById(userId);
+  } catch (error) {
+    console.error("Error checking existing user for details");
+    console.log(error);
+    return next(new HttpError("Cannot get details, please try again", 500));
+  }
+
+  if (!existingUser)
+    return next(new HttpError("User does not exist, please sign up", 404));
+
+  let portfolio;
+  try {
+    portfolio = await Portfolio.findOne({ investor: existingUser._id });
+  } catch (error) {
+    console.error("Error finding the portfolio details of given Id");
+    console.log(error);
+    return next(new HttpError("Cannot get details, please try again", 500));
+  }
+
+  const portfolioDetails = {
+    stocks: portfolio.stocks,
+    funds: portfolio.mutualFunds,
+  };
+
+  res.status(200).json({ id: existingUser._id, portfolioDetails });
 };
 
 exports.signup = signup;

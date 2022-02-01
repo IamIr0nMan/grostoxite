@@ -164,7 +164,8 @@ const buyFund = async (req, res, next) => {
   );
   if (index === -1) {
     const newFund = {
-      fund: fund._id,
+      fundId: fund._id,
+      fundName: fund.fundName,
       units: quantity,
       nav: fund.nav[0].nav,
     };
@@ -172,7 +173,8 @@ const buyFund = async (req, res, next) => {
   } else {
     const availableUnits = portfolio.mutualFunds[index].units;
     const newFund = {
-      fund: fund._id,
+      fundId: fund._id,
+      fundName: fund.fundName,
       units: availableUnits + quantity,
       nav:
         (price + portfolio.mutualFunds[index].nav * availableUnits) /
