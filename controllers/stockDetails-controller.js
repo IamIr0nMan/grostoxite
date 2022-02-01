@@ -2,7 +2,7 @@ const HttpError = require("../models/http-error");
 const StockList = require("../models/stockListSchema");
 
 const getStockById = async (req, res, next) => {
-  const stockId = req.body.stockId;
+  const stockId = req.params.stockId;
 
   let stock;
   try {

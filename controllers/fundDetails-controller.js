@@ -2,7 +2,7 @@ const HttpError = require("../models/http-error");
 const MutualFundList = require("../models/mutualFundListSchema");
 
 const getFundById = async (req, res, next) => {
-  const fundId = req.body.fundId;
+  const fundId = req.params.fundId;
 
   let fund;
   try {

@@ -1,3 +1,6 @@
+const bcrypt = require("bcryptjs");
+const jsonWebToken = require("jsonwebtoken");
+
 const HttpError = require("../models/http-error");
 const Portfolio = require("../models/portfolioSchema");
 const User = require("../models/userSchema");
@@ -32,11 +35,20 @@ const signup = async (req, res, next) => {
       new HttpError("User already exists, please login instead", 422)
     );
 
+  let hashedPassword;
+  try {
+    hashedPassword = await bcrypt.hash(password, 12);
+  } catch (error) {
+    console.error("Error hashing the password on sign up");
+    console.log(error);
+    return next(new HttpError("Sign up failed, please try again later", 500));
+  }
+
   const createdUser = new User({
     fname,
     lname,
     email,
-    password,
+    password: hashedPassword,
     dob: new Date(dob),
     identification,
     mobile,
@@ -65,9 +77,20 @@ const signup = async (req, res, next) => {
     return next(new HttpError("Sign up failed, please try again later", 500));
   }
 
-  res
-    .status(201)
-    .json({ message: "User signup successful", userId: createdUser._id });
+  let token;
+  try {
+    token = await jsonWebToken.sign(
+      { userId: createdUser._id, email: createdUser.email },
+      process.env.TOKEN_SECRET,
+      { expiresIn: "2h" }
+    );
+  } catch (error) {
+    console.error("Error generating token on sign up");
+    console.log(error);
+    return next(new HttpError("Sign up failed, please try again later", 500));
+  }
+
+  res.status(201).json({ userId: createdUser._id, token });
 };
 
 const login = async (req, res, next) => {
@@ -84,10 +107,33 @@ const login = async (req, res, next) => {
 
   if (!existingUser)
     return next(new HttpError("User does not exist, please sign up", 404));
-  else if (existingUser.password !== password)
+
+  let isValidPassword = false;
+  try {
+    isValidPassword = await bcrypt.compare(password, existingUser.password);
+  } catch (error) {
+    console.error("Error comparing hashed password on login");
+    console.log(error);
+    return next(new HttpError("Login failed, please try again later", 500));
+  }
+
+  if (!isValidPassword)
     return next(new HttpError("Invalid Credentials, please try again", 401));
 
-  res.status(200).json({ message: "User logged in", userId: existingUser._id });
+  let token;
+  try {
+    token = await jsonWebToken.sign(
+      { userId: existingUser._id, email: existingUser.email },
+      process.env.TOKEN_SECRET,
+      { expiresIn: "2h" }
+    );
+  } catch (error) {
+    console.error("Error generating token on login");
+    console.log(error);
+    return next(new HttpError("Login failed, please try again later", 500));
+  }
+
+  res.status(200).json({ userId: existingUser._id, token });
 };
 
 const updatePassword = (req, res, next) => {
@@ -100,7 +146,7 @@ const forgotPassword = (req, res, next) => {
   res.json({ message: "Password changed. Use new password to login" });
 };
 
-const getAccountDetails = (req, res, next) => {
+const getAccountDetails = async (req, res, next) => {
   const userId = req.params.userId;
   let existingUser;
 
@@ -132,7 +178,7 @@ const getAccountDetails = (req, res, next) => {
   res.status(200).json({ id: existingUser._id, accountDetails });
 };
 
-const getPortfolioDetails = (req, res, next) => {
+const getPortfolioDetails = async (req, res, next) => {
   const userId = req.params.userId;
   let existingUser;
 
